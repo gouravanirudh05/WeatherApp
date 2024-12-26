@@ -1,0 +1,204 @@
+/* app.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* General reset for consistent styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+
+}
+
+/* Background and layout */
+body {
+  animation: backgroundAnimation 10s infinite;
+  background: linear-gradient(to bottom, #87ceeb, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+/* Keyframes for background color animation */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(to bottom, #87ceeb, #ffffff);
+  }
+  25% {
+    background: linear-gradient(to bottom, #ff7f50, #ffffff);
+  }
+  50% {
+    background: linear-gradient(to bottom, #32cd32, #ffffff);
+  }
+  75% {
+    background: linear-gradient(to bottom, #1e90ff, #ffffff);
+  }
+  100% {
+    background: linear-gradient(to bottom, #87ceeb, #ffffff);
+  }
+}
+
+/* App container
+.weather-app {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+} */
+
+/* Header section */
+.weather-app h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1e90ff;
+}
+
+/* Weather Icon */
+.weather-icon {
+  font-size: 4rem;
+  margin: 1rem 0;
+
+}
+.city-input
+{
+  font-size:1rem;
+  padding: 0.5rem;
+  background-color: #ddd;
+  color: #333;
+}
+/* Temperature display */
+.temperature {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+/* Location */
+.location {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+/* Weather description */
+.description {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+/* Additional info (e.g., humidity, wind) */
+.info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.info div {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Footer (optional) */
+.footer {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .weather-app {
+    padding: 1.5rem;
+  }
+
+  .temperature {
+    font-size: 2.5rem;
+  }
+
+  .info div {
+    font-size: 0.8rem;
+  }
+}
+/* Base Styles */
+.weather-app {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Clouds */
+.weather-app.clouds::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 200%;
+  height: 100px;
+  background: url("clouds.png") repeat-x;
+  animation: moveClouds 20s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Rain */
+.weather-app.rain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url("raindrops.png") repeat;
+  animation: fallRain 1s linear infinite;
+}
+
+@keyframes fallRain {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+/* Wind */
+.weather-app.wind::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("leaves.png") repeat-x;
+  animation: blowLeaves 5s linear infinite;
+}
+
+@keyframes blowLeaves {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
